@@ -2,7 +2,7 @@
 PROJECT = usbhost_test
 BOARD = ulx3s
 # 12 25 45 85
-FPGA_SIZE = 12
+FPGA_SIZE = um-45
 
 # ******* if programming with OpenOCD *******
 # using local latest openocd until in linux distribution
@@ -17,14 +17,14 @@ OPENOCD_INTERFACE=$(SCRIPTS)/ft231x.ocd
 #OPENOCD_INTERFACE=$(SCRIPTS)/ft2232.ocd
 
 # ******* design files *******
-CONSTRAINTS = constraints/ulx3s_v20.lpf
-TOP_MODULE = ulx3s_usbhost_test
+CONSTRAINTS = constraints/ulx4m_v002_nes.lpf
+TOP_MODULE = ulx4m_usbhost_test
 TOP_MODULE_FILE = top/verilog/$(TOP_MODULE).v
 
 include filesv.mk
 
 YOSYS_OPTIONS = -abc9
-NEXTPNR_OPTIONS = --timing-allow-fail
+NEXTPNR_OPTIONS = --timing-allow-fail --lpf-allow-unconstrained
 
 SCRIPTS = ../../../../../../scripts
 include $(SCRIPTS)/diamond_path.mk
